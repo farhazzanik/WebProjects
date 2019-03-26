@@ -1,3 +1,4 @@
+
 <?php
 
    require_once("db_connect/config.php");
@@ -34,20 +35,44 @@
 			  			$imgId = $db->lastid().".png";//i used default extension here due to i don't add extention in data ase
 						
 			  			$allowed = array("jpg","jpeg","png","gif");
+
 			  			   if(in_array($ext,$allowed)){
-					  			 $strfimg="image/".$imgId;   		
-						 $im = imagecreatefrompng($_FILES["file"]["tmp_name"]);
 
-						$im2 = imagecrop($im, ['x' => 0, 'y' => 0, 'width' => 400, 'height' => 400]);
 
-							if ($im2 !== FALSE) {
-							    imagepng($im2, $strfimg);
-							    imagedestroy($im2);
+					  		 $strfimg="image/".$imgId;
+					  		 move_uploaded_file($_FILES["file"]["tmp_name"],$strfimg);
+							@chmod($strfimg,0644);
+
+						if($ext == "png"){
+							
+								list($imgw,$imgh) = getimagesize($strfimg);
+								$src_x = ($imgw / 2) - (400/2);
+								$src_y = ($imgh / 2) - (400/2);
+								$im = imagecreatefrompng($strfimg);
+								$tci = imagecreatetruecolor(400, 400);
+								$im2=imagecopyresampled($tci, $im, 0, 0, $src_x, $src_y, 400, 400, 400, 400);
+								imagepng($tci, $strfimg);
+							
+							}elseif($ext == "gif") {
+								
+								list($imgw,$imgh) = getimagesize($strfimg);
+								$src_x = ($imgw / 2) - (400/2);
+								$src_y = ($imgh / 2) - (400/2);
+								$im = imagecreatefromgif($strfimg);
+								$tci = imagecreatetruecolor(400, 400);
+								$im2=imagecopyresampled($tci, $im, 0, 0, $src_x, $src_y, 400, 400, 400, 400);
+								imagegif($tci, $strfimg);
+							}else {
+								list($imgw,$imgh) = getimagesize($strfimg);
+								$src_x = ($imgw / 2) - (400/2);
+								$src_y = ($imgh / 2) - (400/2);
+								$im = imagecreatefromjpeg($strfimg);
+								$tci = imagecreatetruecolor(400, 400);
+								$im2=imagecopyresampled($tci, $im, 0, 0, $src_x, $src_y, 400, 400, 400, 400);
+								imagejpeg($tci, $strfimg);
 							}
 
-
-					// move_uploaded_file($_FILES["file"]["tmp_name"],$strfimg);
-					// @chmod($strfimg,0644);
+					
 					  			  
 			           
 			       			 }
@@ -112,17 +137,41 @@
 						
 			  			$allowed = array("jpg","jpeg","png","gif");
 			  			   if(in_array($ext,$allowed)){
-					  			   	
-					  			   		$strfimg="image/".$imgId;   		
-						 $im = imagecreatefrompng($_FILES["file"]["tmp_name"]);
+					  				
 
-						$im2 = imagecrop($im, ['x' => 0, 'y' => 0, 'width' => 400, 'height' => 400]);
+					  		 $strfimg="image/".$imgId;
+					  		 move_uploaded_file($_FILES["file"]["tmp_name"],$strfimg);
+							@chmod($strfimg,0644);
 
-							if ($im2 !== FALSE) {
-							    imagepng($im2, $strfimg);
-							    imagedestroy($im2);
+						if($ext == "png"){
+							
+								list($imgw,$imgh) = getimagesize($strfimg);
+								$src_x = ($imgw / 2) - (400/2);
+								$src_y = ($imgh / 2) - (400/2);
+								$im = imagecreatefrompng($strfimg);
+								$tci = imagecreatetruecolor(400, 400);
+								$im2=imagecopyresampled($tci, $im, 0, 0, $src_x, $src_y, 400, 400, 400, 400);
+								imagepng($tci, $strfimg);
+							
+							}elseif($ext == "gif") {
+								
+								list($imgw,$imgh) = getimagesize($strfimg);
+								$src_x = ($imgw / 2) - (400/2);
+								$src_y = ($imgh / 2) - (400/2);
+								$im = imagecreatefromgif($strfimg);
+								$tci = imagecreatetruecolor(400, 400);
+								$im2=imagecopyresampled($tci, $im, 0, 0, $src_x, $src_y, 400, 400, 400, 400);
+								imagegif($tci, $strfimg);
+							}else {
+								list($imgw,$imgh) = getimagesize($strfimg);
+								$src_x = ($imgw / 2) - (400/2);
+								$src_y = ($imgh / 2) - (400/2);
+								$im = imagecreatefromjpeg($strfimg);
+								$tci = imagecreatetruecolor(400, 400);
+								$im2=imagecopyresampled($tci, $im, 0, 0, $src_x, $src_y, 400, 400, 400, 400);
+								imagejpeg($tci, $strfimg);
 							}
-					  			  
+
 			           
 			       			 }
 
@@ -145,7 +194,7 @@
 	 $showSql="SELECT * FROM `api_table` ORDER BY id ASC";
  	$result_data = $db->select_query($showSql);	
 
-		if($result_data->num_rows > 0)	{
+		if(isset($result_data) && $result_data !="")	{
 			$i = 0;
 			while($fetch_Data = $result_data->fetch_object()){
 				$i++;
@@ -257,7 +306,7 @@
  if(isset($_POST["checkShowData"])){
  	$fulname =  $db->escape($_POST["fulname"]);
  	$explode = explode(',', $fulname);
- 	$sql = "SELECT * FROM api_table WHERE town LIKE '%$explode[0]%'";
+ 	 $sql = "SELECT * FROM api_table WHERE town LIKE '%$explode[0]%'";
     $sqlquery = $db->select_query($sql);
  
  
@@ -267,20 +316,25 @@
 		while($fetch_Data = $sqlquery->fetch_object()){
 				$i++;
 		?> 
+		<input type="hidden" name="latitude[0]" class="latitude" id="latitude" value="<?php echo $fetch_Data->latitude."__".$fetch_Data->longitude."__".$fetch_Data->image_url."__".$fetch_Data->displayable_address.'__'.$fetch_Data->price?>">
 		<?php if($i == 1){ ?>
+
 			<div class="col-lg-12 col-xs-12" style="margin-top: 5px;" >
 				<div class="col-sm-12 col-lg-4" style="padding: 0px;">
 					<br/><p style="font-size: 24px; font-weight: bold;">Total Properties : <?php echo $sqlquery->num_rows;?>
 				</p> 
 				</div>
 
-				<div class="col-lg-4 col-sm-12" style="padding: 0px;">
-						<img src="<?php echo $fetch_Data->image_url; ?>" style="height: 200px; width: 200px; margin:5px;" class="img-thumbnail"> <br/><span style=" font-weight: bold; color:orange; font-size:16px;">$ <?php echo $fetch_Data->price; ?><br>Top One</span>
+				
 
-				</div>
+				<div class="col-lg-8 col-sm-12" style="padding: 0px;">
 
-				<div class="col-lg-4 col-sm-12" style="padding: 0px;">
-						<img src="<?php echo $fetch_Data->image_url; ?>" style="height: 200px; width: 200px; margin:5px;" class="img-thumbnail"> <br/><span style="font-weight: bold; color:orange; font-size:14px;">Click for exect location</span>
+
+   <div id="mapid">  </div>
+
+  
+
+						 <br/>
 
 				</div>
 			</div>
@@ -320,20 +374,25 @@
 		while($fetch_Data = $sqlquery->fetch_object()){
 				$i++;
 		?> 
+		<input type="hidden" name="latitude[0]" class="latitude" id="latitude" value="<?php echo $fetch_Data->latitude."__".$fetch_Data->longitude."__".$fetch_Data->image_url."__".$fetch_Data->displayable_address.'__'.$fetch_Data->price?>">
 		<?php if($i == 1){ ?>
+
 			<div class="col-lg-12 col-xs-12" style="margin-top: 5px;" >
 				<div class="col-sm-12 col-lg-4" style="padding: 0px;">
 					<br/><p style="font-size: 24px; font-weight: bold;">Total Properties : <?php echo $sqlquery->num_rows;?>
 				</p> 
 				</div>
 
-				<div class="col-lg-4 col-sm-12" style="padding: 0px;">
-						<img src="<?php echo $fetch_Data->image_url; ?>" style="height: 200px; width: 200px; margin:5px;" class="img-thumbnail"> <br/><span style=" font-weight: bold; color:orange; font-size:16px;">$ <?php echo $fetch_Data->price; ?><br>Top One</span>
+				
 
-				</div>
+				<div class="col-lg-8 col-sm-12" style="padding: 0px;">
 
-				<div class="col-lg-4 col-sm-12" style="padding: 0px;">
-						<img src="<?php echo $fetch_Data->image_url; ?>" style="height: 200px; width: 200px; margin:5px;" class="img-thumbnail"> <br/><span style="font-weight: bold; color:orange; font-size:14px;">Click for exect location</span>
+
+   <div id="mapid">  </div>
+
+  
+
+						 <br/>
 
 				</div>
 			</div>
@@ -361,5 +420,34 @@
 		<?php
  } } 
  }
+ ?>
+
+    <script type="text/javascript">
+    	
+    	var latitude = [];
+		$('.latitude').each(function(){latitude.push($(this).val());});
+var mymap = L.map('mapid').setView([latitude[0].split('__')[0], latitude[0].split('__')[1]], 13);
+
+		for (var i = 0; i < latitude.length; i++) {
+		
+			 var marker = L.marker([latitude[i].split('__')[0], latitude[i].split('__')[1]]).addTo(mymap);
+			 
+			marker.bindPopup("<div style='width:150px; height:80px;'><div style='width:70px; width:70px; float:left;clear:right;'><img src="+latitude[i].split('__')[2]+" height='100%;' width='100%'></img></div><div style='width:80px; height:80px; float:right; padding-left:5px;'><span style=''>"+latitude[i].split('__')[3]+"<br/>"+latitude[i].split('__')[4]+"</span></div></div>").openPopup();
+	}
+
+      
+       
+
+        
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFoZnV6OSIsImEiOiJjanRwb3RoOWgwNmJ4NGVzNzFwdXZ3anNsIn0.Sd334xoVhnFUf29HLio80Q', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 18,
+            id: 'mapbox.streets',
+            accessToken: 'pk.eyJ1IjoibWFoZnV6OSIsImEiOiJjanRwb3RoOWgwNmJ4NGVzNzFwdXZ3anNsIn0.Sd334xoVhnFUf29HLio80Q'
+        }).addTo(mymap);
+      </script>
+
+
+<?php
  }
 ?>

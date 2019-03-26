@@ -115,6 +115,7 @@ class database {
 			return $ext = strtolower($endofArray);
 		}
 
+	
 
 	public function _destruct()
 	{

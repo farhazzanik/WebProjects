@@ -8,7 +8,7 @@
 		 $sql = "SELECT * FROM `adminarea` ORDER BY id ASC";
 		$result_data = $db->select_query($sql);	
 
-		if($result_data->num_rows > 0)	{
+		if($result_data != "")	{
 			while($fetch_Data = $result_data->fetch_object()){
 
 					echo "<tr align='center'>
@@ -16,7 +16,7 @@
 		                <td id='country".$fetch_Data->id."'>".$fetch_Data->country."</td>
 		                <td id='town".$fetch_Data->id."'>".$fetch_Data->town."</td>
 		                <td id='postcode".$fetch_Data->id."'>".$fetch_Data->postcode."</td>
-		                <td id='Description".$fetch_Data->id."'>".$fetch_Data->Description."</td>
+		                <td id='Description".$fetch_Data->id."'>".substr($fetch_Data->Description, 0,100)."</td>
 		                <td id='Address".$fetch_Data->id."'>".$fetch_Data->Address."</td>
 		                <td id='image".$fetch_Data->id."'>
 		                <img src='image/".$fetch_Data->id.".png' height='80' width='80'></td>

@@ -53,8 +53,8 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="./">Home</a></li>
-        <li><a href="api.php">API</a></li>
+        <li><a href="./">Home</a></li>
+        <li class="active"><a href="api.php">API</a></li>
         <li><a href="Propertise.php">Search Propertise</a></li>
        
       </ul>
@@ -73,7 +73,7 @@
 	$db = new database();
 
 
-	$path = 'http://api.zoopla.co.uk/api/v1/property_listings.xml?postcode=3900&area=Oxford&api_key=j9asqq3kygar9d8p6zzb2cgx';
+	$path = 'http://api.zoopla.co.uk/api/v1/property_listings.xml?postcode=11415&area=Oxford&api_key=435yu6qummgwuv5qjbggh7b2';
 
 		$xmlfile = file_get_contents($path);
 		$ob= simplexml_load_string($xmlfile);
@@ -99,7 +99,7 @@
 			$property_type = $db->escape($configData["listing"][$i]["property_type"]);
 			$status = $db->escape($configData["listing"][$i]["status"]);
 
-		 $replaceQuery = "REPLACE INTO  `api_table` (`county`,`country`,`town`,`description`,`details_url`,`displayable_address`,`image_url`,`thumbnail_url`,`latitude`,`longitude`,`num_bedrooms`,`num_bathrooms`,`price`,`property_type`,`status`)VALUES('".$county."','".$country."','".$post_town."','".$description."','".$details_url."','".$displayable_address."','".$image_url."','".$thumbnail_url."','".$latitude."','".$longitude."','".$num_bedrooms."','".$num_bathrooms."','".$price."','".$property_type."','".$status."')";
+		   $replaceQuery = "REPLACE INTO  `api_table` (`county`,`country`,`town`,`description`,`details_url`,`displayable_address`,`image_url`,`thumbnail_url`,`latitude`,`longitude`,`num_bedrooms`,`num_bathrooms`,`price`,`property_type`,`status`)VALUES('".$county."','".$country."','".$post_town."','".$description."','".$details_url."','".$displayable_address."','".$image_url."','".$thumbnail_url."','".$latitude."','".$longitude."','".$num_bedrooms."','".$num_bathrooms."','".$price."','".$property_type."','".$status."')";
 			$insert =  $db->insert_query($replaceQuery);
 			}
 		}

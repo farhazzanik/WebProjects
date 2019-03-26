@@ -7,16 +7,20 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-          
- 
-  
+ <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css"
+   integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+   crossorigin=""/>
+              <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js"
+   integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+   crossorigin=""></script>
+
   <style>
     /* Remove the navbar's default margin-bottom and rounded borders */ 
     .navbar {
       margin-bottom: 0;
       border-radius: 0;
     }
-    
+       #mapid { height:300px; }
     /* Add a gray background color and some padding to the footer */
     footer {
       background-color: #f2f2f2;
@@ -191,9 +195,9 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="./">Home</a></li>
+        <li ><a href="./">Home</a></li>
         <li><a href="api.php">API</a></li>
-         <li><a href="Propertise.php">Search Propertise</a></li>
+         <li class="active"><a href="Propertise.php">Search Propertise</a></li>
        
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -230,7 +234,7 @@
   </div>
 </div><br>
 <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-<script src="propertise.js"></script>
+<script src="action.js"></script>
 <script type="text/javascript">
   
 //autosearch
@@ -302,6 +306,7 @@ $(document).ready(function(){
 function showData(fulname){
   var fulname = fulname;
   var checkShowData = 50;
+
   if(fulname != ""){
   $.ajax({
            type: "POST",
@@ -309,8 +314,10 @@ function showData(fulname){
             data: {fulname:fulname,checkShowData:checkShowData},
            
       success:function(data){
-        $('#datashow').html("");
-         $('#datashow').html(data);
+           $('#datashow').html("");
+           $('#datashow').fadeOut("fast");
+           $('#datashow').html(data);
+           $('#datashow').fadeIn("slow");
           }
     });
 }

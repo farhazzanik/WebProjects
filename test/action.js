@@ -196,3 +196,20 @@ loaddata();
   }
 }
 
+
+//load propertise
+function loadPropertise(){
+   var LoadPropertise = 10;
+$.ajax({
+           type: "POST",
+            url: "ajaxSubmit.php",
+            data: {LoadPropertise:LoadPropertise},
+           
+      success:function(data){
+        $('#datashow').html(data);
+        $('#datashow').fadeIn("slow");
+          }
+    });
+
+}
+loadPropertise();

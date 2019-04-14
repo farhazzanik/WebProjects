@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <title>Note Manager</title>
+
+    <link href="style.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ 
+  </head>
+  <body>
+   		
+   <div class="container">
+			<div class="col-lg-12 text-center bg-primary">
+				<header>
+					<h2>Note Manager</h2>
+					<form id="search-note">
+						<div class="col-lg-4 col-lg-offset-4">
+							<input type="text" class="form-control" placeholder="search-note Note...">
+							<br/><br/>
+						</div>
+					</form>
+				</header>
+			</div>
+
+			<div class="col-lg-12 note-list">
+				<ul id="list">
+					<li>
+						<p>First Note</p>
+						<p class="fonts-wrapper">
+							
+							<i class="fa fa-times"></i>
+							<i class="fa fa-save" id="fa-save"></i>
+							<i class="fa fa-pencil-square-o"></i>
+
+							<input type="text" class="edit-note">
+						</p>
+					</li>
+
+					<li>
+						<p>Second Note</p>
+						<p class ="fonts-wrapper">
+							
+							<i class="fa fa-times"></i>
+							<i class="fa fa-save" id="fa-save"></i>
+							<i class="fa fa-pencil-square-o"></i>
+							<input type="text" class="edit-note">
+						</p>
+					</li>
+
+					<li>
+						<p>Third Note</p>
+						<p class="fonts-wrapper">
+							
+							<i class="fa fa-times"></i>
+							<i class="fa fa-save" id="fa-save"></i>
+							<i class="fa fa-pencil-square-o"></i>
+							<input type="text" class="edit-note">
+						</p>
+					</li>
+				</ul>
+			</div>
+
+			<div class="hide-list">
+				<label for="hide">Hide Notes</label>
+				<input type="checkbox" id="hide" name="hide">
+			</div>
+
+			<div class="col-lg-12 bg-warning text-center">
+				<br/><br/>
+					<form class="form-inline">
+					    
+					    <div class="form-group">
+					        <label class="sr-only" for="itemText">newItems</label>
+					        <input type="text" class="form-control" id="itemText" style="width: 100%"  placeholder="Add a note..">
+					    </div>
+					  
+					    <button type="submit" id="add-items" class="btn btn-success">Add</button>
+					</form>
+											 
+				<br/><br/>
+			</div>
+		</div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+     <script src="script.js"></script>
+  </body>
+</html>

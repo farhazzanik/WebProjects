@@ -1,0 +1,145 @@
+body{
+	background-color: #ccc;
+}
+
+.col-centered{
+	float: none;
+	margin: 0 auto;
+	border-radius: 0px;
+	width: 100%;
+
+
+}
+
+label{
+	color: white;
+	font-size: 18px;
+	font-weight: 600;
+}
+
+h2{
+	color: white;
+}
+
+.toplist li{
+	margin-top: 10px;
+}
+.toplist label{
+	color: black;
+}
+.middle-div{
+	background-color: #F6F6F6;
+	padding-top: 5px;
+}
+.form-inline input[type="text"]{
+	border-radius: 0px;
+	width: 280px;
+}
+.form-inline input[type="number"]{
+	border-radius: 0px;
+	width: 50px;
+}
+.btn{
+
+	border-radius: 0px;
+}
+.footer-div{
+	background-color: white;
+	height: 400px;
+	padding-top: 20px;
+}
+.sndlistspan{
+	float: right;
+} 
+.leftdiv h5{
+	display: block;
+	color: green;
+	font-weight: 600;
+	border-bottom: 2px #ccc solid;
+}
+.leftdiv ul{
+	padding-left: 8px;
+}
+
+.rightdiv h5{
+	display: block;
+	color: red;
+	font-weight: 600;
+	border-bottom: 2px #ccc solid;
+}
+.rightdiv ul{
+	padding-left: 8px;
+}
+
+#value{
+	width: 80px;
+}
+.form-inline select{
+	border-radius: 0px;
+}
+@media (max-width: 575.98px) { 
+	.header{
+		background-image: url('../image/vhoa0.jpg');
+		background-size:cover;
+ 		background-repeat: no-repeat;
+ 		height: 230px;
+ 		opacity: 0.5;
+  		filter: alpha(opacity=50);
+  		width: 100%;
+	}
+ }
+
+ @media (min-width: 576px) and (max-width: 767.98px) {
+ 	.header{
+		background-image: url('../image/vhoa0.jpg');
+		background-size:cover;
+ 		background-repeat: no-repeat;
+ 		height: 230px;
+ 		opacity: 0.5;
+  		filter: alpha(opacity=50);
+  		width: 100%;
+	}
+  }
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+	.header{
+		background-image: url('../image/vhoa0.jpg');
+		background-size:cover;
+ 		background-repeat: no-repeat;
+ 		height: 230px;
+ 		opacity: 0.5;
+  		filter: alpha(opacity=50);
+  		width: 100%;
+	}
+
+}
+
+/*// Large devices (desktops, 992px and up)*/
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+	.header{
+		background-image: url('../image/vhoa0.jpg');
+		background-size:cover;
+ 		background-repeat: no-repeat;
+ 		height: 250px;
+ 		opacity: 0.5;
+  		filter: alpha(opacity=50);
+  		width: 100%;
+
+  	
+	}
+ }
+
+/*// Extra large devices (large desktops, 1200px and up)*/
+@media (min-width: 1200px) { 
+	.header{
+		background-image: url('../image/vhoa0.jpg');
+		background-size:cover;
+ 		background-repeat: no-repeat;
+ 		height: 300px;
+ 		opacity: 0.5;
+  		filter: alpha(opacity=50);
+  		width: 100%;
+ 	}
+
+ }

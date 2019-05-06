@@ -202,7 +202,7 @@ var UIcontroller =(function(){
 
  				  input_type : document.querySelector(DOMstring.input_type).value,
  				  input_description:document.querySelector(DOMstring.input_description).value,
- 				  input_value: parseFloat(document.querySelector(DOMstring.input_value).value)
+ 				  input_value: parseFloat(document.querySelector(DOMstring.input_value).value,
 
  				};
 			},

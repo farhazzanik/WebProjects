@@ -1,0 +1,181 @@
+.container{
+	font-family: Ubuntu;
+	font-style: normal; 
+	font-variant: normal;
+}
+
+.top-header {
+	background-color: black;
+}
+.h-left-divs{
+	padding-top: 9px;
+	background-color: black;
+	padding-bottom: 8px;
+
+}
+.h-left-div {
+	padding-top: 5px;
+	background-color: black;
+	padding-bottom: 8px;
+}
+.h-left-div span {
+		color: white;
+		font-weight: bold;
+
+}
+
+#login{
+	  color: white;
+	  padding: 2px 20px;
+	  text-align: center; 
+	  text-decoration: none;
+	  display: inline-block;
+}
+
+
+.h-left-divs span {
+		color: white;
+		font-weight: bold;
+
+}
+
+.middle-header{
+	border-left: 2px #cccccc solid;
+	border-right: 2px #cccccc solid;
+	border-bottom: 1px #cccccc solid;
+	
+}
+
+.middle-header ul {
+	  list-style-type: none;
+	  padding-top: 5px;
+	 
+}
+
+.middle-header ul  li {
+	display: inline;
+	font-size: 18px;
+	padding-left: 10px;
+	font-weight: bold;
+	color: #808080;
+
+}
+.middle-header ul  li i {
+	color: orange;
+	font-size: 14px;
+}
+
+.bottom-header{
+	background-color: #D3D3D3;
+	border-left: 2px #cccccc solid;
+	border-right: 2px #cccccc solid;
+	border-bottom: 1px #cccccc solid;
+	
+}
+.bottom-header ul {
+
+	  list-style-type: none;
+	  padding-top: 10px;
+}
+
+.bottom-header ul  li {
+	display: inline;
+	font-weight: bold;
+	padding-left: 10px;
+	font-size: 12px;
+	color: #808080;
+
+}
+
+.bottom-header  a {
+	text-decoration: none;
+	color: #808080;
+}
+.midcontent{
+	
+	border-left: 2px #cccccc solid;
+	border-right: 2px #cccccc solid;
+	border-bottom: 1px #cccccc solid;
+	
+}
+
+.table-content {
+	 margin-top: 20px;
+	 margin-bottom: 20px;
+}
+
+.table-content th {
+	font-weight: bold;
+}
+
+.user-table  {
+	margin-top: 5px;
+}
+.user-table th {
+	border-left: 1px #cccccc solid;
+	border-right: 1px #cccccc solid;
+	border-top: 1px #cccccc solid;
+    border-bottom: 2px #ccc solid;
+	background-color: rgba(0,0,0,.03);
+	font-weight: bold;
+}
+
+.user-table input[type=text] {
+		border-radius: 0px;
+}
+
+.user-table input[type=number] {
+		border-radius: 0px;
+}
+
+.user-table select {
+
+	border-radius: 0px;
+	cursor: pointer;
+}
+#Submit{
+	background-color: green;
+	color: white;
+	padding: 2px 20px;
+	text-align: center;
+	display: inline-block; 
+	border-radius: 20%;
+	border: 1px white solid;
+}
+
+.Submit{
+	background-color: green;
+	color: white;
+	padding: 2px 20px;
+	text-align: center;
+	display: inline-block; 
+	border-radius: 20%;
+	border: 1px white solid;
+}
+
+#reset {
+	background-color: red;
+	color: white;
+	padding: 2px 20px;
+	text-align: center;
+	display: inline-block; 
+	border-radius: 20%;
+	border: 1px white solid;
+
+}
+
+.reset {
+	background-color: red;
+	color: white;
+	padding: 2px 20px;
+	text-align: center;
+	display: inline-block; 
+	border-radius: 20%;
+	border: 1px white solid;
+
+}
+
+.fa-asterisk{
+	color: red;
+	padding-top: 15px;
+}

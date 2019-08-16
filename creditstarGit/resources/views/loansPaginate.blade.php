@@ -30,8 +30,8 @@
                                  @foreach($allData as $showData)
                                      <tr id="{{$showData->id}}" class="">
                                         <td id="{{$showData->fk_user_id}}">{{$showData->first_name}}&nbsp;  {{$showData->last_name}}</td>
-                                        <td>{{number_format($showData->amount,2)}}</td>
-                                        <td>{{number_format($showData->interest,2)}}</td>
+                                        <td>{{$showData->amount}}</td>
+                                        <td>{{$showData->interest}}</td>
                                         <td>{{$showData->duration}}</td>
                                         <td>{{$showData->start_date}}</td>
                                         <td>{{$showData->end_date}}</td>
